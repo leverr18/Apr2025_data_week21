@@ -1,0 +1,82 @@
+Overview of the Analysis
+The goal of this analysis was to create a deep learning model using TensorFlow to predict the success of Alphabet Soup applications based on various input features. The model was designed to predict whether an organization will succeed or not based on historical data, including financial data and other application-related features. The analysis aimed to identify patterns in the data that can be leveraged to make accurate predictions.
+
+Results
+Data Preprocessing
+Target Variable:
+
+The target variable for the model is the IS_SUCCESSFUL column, which indicates whether an application was successful or not (binary classification: 1 for success, 0 for failure).
+
+Feature Variables:
+
+The feature variables include all the other columns in the dataset, except for the target variable and any columns that are irrelevant or redundant for prediction. These include:
+
+APPLICATION_TYPE, AFFILIATION, CLASSIFICATION, ASK_AMT, ORGANIZATION, and STATUS, among others.
+
+Variables to Remove:
+
+The STATUS variable was removed due to its potential high cardinality (many unique values) and because it was contributing to overfitting.
+
+Additionally, some columns with excessive missing data or columns that had no predictive power (e.g., EIN or NAME) were excluded from the features.
+
+Based on the evaluation, STATUS was found to not significantly contribute to the model’s performance and was dropped to avoid introducing noise.
+
+Compiling, Training, and Evaluating the Model
+Neurons, Layers, and Activation Functions:
+
+The model was designed with two hidden layers to simplify the deep learning model to avoid overfitting
+
+Dropout: A 0.2 dropout was added after each hidden layer to reduce overfitting.
+
+Output Layer: A single neuron with a sigmoid activation function to predict a binary outcome.
+
+The ReLU activation functions were chosen because they are effective at preventing the vanishing gradient problem and help the model learn more complex patterns. Dropout was used to further regularize the model and reduce overfitting.
+
+Achieving Target Model Performance:
+
+The goal was to achieve a validation loss below 0.5 and an accuracy above 75%.
+
+After tuning the model, the best validation loss achieved was 0.56, and the highest validation accuracy was 73%.
+
+While the accuracy improved by 1% and validation loss decreased slightly, the model did not reach the target performance.
+
+Steps Taken to Increase Model Performance:
+
+Data Preprocessing:
+
+Adjusted the cutoff and threshold values for some variables like ASK_AMT (also added to avoid outliers) to ensure more data was available for training.
+
+Dropped irrelevant variables like STATUS to avoid overfitting.
+
+Model Adjustments:
+
+Reduced the number of neurons in each layer to prevent overfitting.
+
+Increased the batch size to stabilize the learning process and improve training performance.
+
+Model Performance:
+
+Training Accuracy: Around 73%
+
+Validation Accuracy: Around 73%.
+
+Training Loss: 0.55
+
+Validation Loss: 0.56
+
+The model performed reasonably well but did not reach the desired target accuracy or validation loss.
+
+Summary
+The deep learning model developed for the Alphabet Soup classification task performed reasonably well but did not achieve the desired level of predictive accuracy. Despite trying multiple strategies to optimize the model, such as adjusting the number of neurons, dropout rate, and data preprocessing techniques, the model still achieved an accuracy of 73% and a validation loss of 0.56.
+
+Recommendations:
+
+Other Models: The deep learning model may not be the best solution for this particular classification problem, especially with the relatively small dataset. A Random Forest or Gradient Boosting Machine (GBM) might perform better as they handle categorical data and noise more effectively and tend to be less prone to overfitting than deep learning models.
+
+Hyperparameter Tuning: Further tuning of hyperparameters like learning rate, number of neurons, batch size, and number of layers could be tested, especially with techniques like Grid Search or Random Search.
+
+Feature Engineering: Improving the preprocessing step with better feature extraction, scaling, or encoding techniques might also help improve the model’s performance.
+
+Alternative Neural Network Architectures: Trying architectures such as Convolutional Neural Networks (CNNs) or Recurrent Neural Networks (RNNs) could be beneficial, depending on the nature of the data.
+
+Overall, while the deep learning approach provides a good baseline, alternative machine learning methods and further refinements to the neural network might yield better results for this classification problem.
